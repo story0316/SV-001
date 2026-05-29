@@ -283,11 +283,46 @@ SMS: 10분 후 재시도 (최대 1회)
 
 ---
 
+## 8. Phase 4 AI 이상징후 탐지 (추가)
+
+### 탐지 항목
+
+```
+1. Time Shift Detection
+   - 최근 7일 응답 시각 vs 과거 30일 평균 비교
+   - 3시간 이상 이동 시 이상 감지 (+20점)
+
+2. Streak Break Detection
+   - 7일+ 연속 응답 후 3일+ 연속 무응답
+   - 행동 변화 강력 신호 (+15점)
+
+3. Weekend Behavior Change
+   - 4주 주말 응답률 vs 직전 4주 비교
+   - 20%p 이상 하락 시 이상 (+10점)
+
+4. Seasonal Factor
+   - 겨울(12~2월): +5점 (낙상, 동사 위험)
+   - 여름(7~8월): +2점 (열사병 위험)
+
+5. Age Factor
+   - 75세+: (나이-75) × 1.5점 (최대 15점)
+```
+
+### 20점 급등 즉시 알림
+
+```
+risk-recalc cron 실행 시:
+  이전 점수 → 현재 점수 변화량 ≥ 20점
+  → 담당 복지사에게 즉시 Push 알림 발송
+  → notifications 테이블 기록
+```
+
 ## Change Log
 
 | Version | Date | Author | Changes | Expected Impact |
 |---|---|---|---|---|
 | v0.1 | 2026-05-29 17:30 | Product | Initial notification design | Implement smart alert system |
+| v0.2 | 2026-05-29 | Dev | Phase 4: AI anomaly detection (time shift, streak break, weekend, seasonal, age) | False Positive < 15% 목표 |
 
 ---
 

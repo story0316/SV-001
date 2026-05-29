@@ -11,10 +11,17 @@ import { NotifyModal } from "@/components/welfare/NotifyModal";
 
 const WORKER_ID = "a0000000-0000-0000-0000-000000000001"; // TODO: real auth
 
+interface AnomalyData {
+  anomaly: { score: number; factors: string[]; timeShift: { detected: boolean; shiftHours: number } };
+  responseRate: string;
+  avgResponseTime?: string;
+}
+
 export default function ClientDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
   const [detail, setDetail] = useState<ClientDetail | null>(null);
+  const [anomaly, setAnomaly] = useState<AnomalyData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showRecord, setShowRecord] = useState(false);
   const [showNotify, setShowNotify] = useState(false);
@@ -22,8 +29,12 @@ export default function ClientDetailPage() {
   const [savingNote, setSavingNote] = useState(false);
 
   const load = useCallback(async () => {
-    const res = await fetch(`/api/welfare/client?id=${id}`);
-    if (res.ok) setDetail(await res.json());
+    const [detailRes, anomalyRes] = await Promise.all([
+      fetch(`/api/welfare/client?id=${id}`),
+      fetch(`/api/welfare/anomaly?clientId=${id}`),
+    ]);
+    if (detailRes.ok) setDetail(await detailRes.json());
+    if (anomalyRes.ok) setAnomaly(await anomalyRes.json());
     setLoading(false);
   }, [id]);
 
@@ -91,6 +102,33 @@ export default function ClientDetailPage() {
             level={detail.riskLevel}
             factors={detail.riskFactors}
           />
+
+          {/* AI 이상징후 분석 (Phase 4) */}
+          {anomaly && (anomaly.anomaly.score > 0 || anomaly.anomaly.factors.length > 0) && (
+            <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-semibold text-purple-800">🤖 AI 이상징후 분석</h3>
+                <span className="text-xs font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">
+                  +{anomaly.anomaly.score}점 기여
+                </span>
+              </div>
+              {anomaly.anomaly.factors.length > 0 ? (
+                <ul className="space-y-0.5">
+                  {anomaly.anomaly.factors.map((f, i) => (
+                    <li key={i} className="text-xs text-purple-700 flex items-center gap-1.5">
+                      <span>•</span>{f}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-xs text-purple-600">이상징후 없음</p>
+              )}
+              <div className="flex gap-4 mt-2 pt-2 border-t border-purple-100 text-xs text-purple-600">
+                {anomaly.responseRate && <span>응답률 {anomaly.responseRate}</span>}
+                {anomaly.avgResponseTime && <span>평균 응답시각 {anomaly.avgResponseTime}</span>}
+              </div>
+            </div>
+          )}
 
           {/* Basic Info */}
           <div className="bg-white rounded-xl p-4 border border-gray-100">
