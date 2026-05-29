@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실버케어 — 화면 목업</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #111827; }
+  .screen { width: 390px; min-height: 844px; background: #F9FAFB; border-radius: 40px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.5); position: relative; }
+  .screen-label { color: #9CA3AF; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .grid-wrap { display: flex; flex-wrap: wrap; gap: 48px; padding: 48px; justify-content: center; }
+  .col { display: flex; flex-direction: column; align-items: center; }
+</style>
+</head>
+<body>
+
+<div style="padding: 32px; text-align: center; margin-bottom: 8px;">
+  <h1 style="color: #F9FAFB; font-size: 24px; font-weight: 700;">🏠 실버케어 플랫폼 — 화면 목업</h1>
+  <p style="color: #6B7280; font-size: 14px; margin-top: 8px;">Phase 1~6 구현 기반 실제 컴포넌트 구조</p>
+</div>
+
+<div class="grid-wrap">
+
+<!-- ───── LOGIN ───── -->
+<div class="col">
+  <div class="screen-label">로그인 /login</div>
+  <div class="screen" style="display:flex;align-items:center;justify-content:center;padding:24px;">
+    <div style="width:100%;">
+      <div style="text-align:center;margin-bottom:32px;">
+        <div style="font-size:48px;margin-bottom:12px;">🏠</div>
+        <div style="font-size:24px;font-weight:700;color:#111827;">실버케어</div>
+        <div style="font-size:14px;color:#6B7280;margin-top:4px;">고령층 안부 확인 플랫폼</div>
+      </div>
+      <div style="background:white;border-radius:20px;padding:24px;border:1px solid #F3F4F6;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:14px;font-weight:500;color:#374151;margin-bottom:6px;">이메일</label>
+          <div style="height:48px;border:1px solid #E5E7EB;border-radius:12px;padding:0 16px;display:flex;align-items:center;">
+            <span style="color:#9CA3AF;font-size:14px;">example@email.com</span>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:14px;font-weight:500;color:#374151;margin-bottom:6px;">비밀번호</label>
+          <div style="height:48px;border:1px solid #E5E7EB;border-radius:12px;padding:0 16px;display:flex;align-items:center;">
+            <span style="color:#9CA3AF;font-size:14px;">••••••••</span>
+          </div>
+        </div>
+        <div style="height:48px;background:#2563EB;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <span style="color:white;font-size:14px;font-weight:600;">로그인</span>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:12px;color:#9CA3AF;margin-top:20px;">계정이 없으신 경우 기관 관리자에게 문의하세요</p>
+    </div>
+  </div>
+</div>
+
+<!-- ───── W01 TODAY DASHBOARD ───── -->
+<div class="col">
+  <div class="screen-label">W01 복지사 대시보드 /</div>
+  <div class="screen">
+    <!-- Header -->
+    <div style="background:white;border-bottom:1px solid #F3F4F6;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:14px;color:#6B7280;">5월 29일 (목)</div>
+        <div style="font-size:22px;font-weight:700;color:#111827;">👋 이민지님</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="padding:4px 12px;background:#FEE2E2;color:#DC2626;border-radius:999px;font-size:15px;font-weight:700;">🔴 3</span>
+        <span style="padding:4px 12px;background:#FEF3C7;color:#D97706;border-radius:999px;font-size:15px;font-weight:700;">🟠 5</span>
+        <span style="font-size:12px;color:#9CA3AF;cursor:pointer;">로그아웃</span>
+      </div>
+    </div>
+
+    <div style="padding:16px;overflow-y:auto;max-height:780px;padding-bottom:80px;">
+      <!-- Critical Section -->
+      <div style="font-size:16px;font-weight:700;color:#DC2626;margin-bottom:12px;">🔴 즉시 조치 필요 <span style="font-size:14px;font-weight:400;color:#9CA3AF;">(3명)</span></div>
+
+      <!-- Client Card 1 -->
+      <div style="background:white;border-radius:12px;border-left:4px solid #EF4444;padding:16px;margin-bottom:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:20px;">🔴</span>
+            <span style="font-size:16px;font-weight:700;color:#DC2626;">즉시 조치</span>
+          </div>
+          <span style="font-size:13px;color:#9CA3AF;">오늘 2회 시도</span>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:#111827;margin-bottom:4px;">김순자 <span style="font-size:16px;font-weight:400;color:#6B7280;">(78세 · 강남구)</span></div>
+        <div style="font-size:15px;color:#6B7280;margin-bottom:2px;">• 5일 연속 무응답</div>
+        <div style="font-size:15px;color:#6B7280;margin-bottom:12px;">• 응답 패턴 변화 감지</div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;height:44px;background:#2563EB;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:15px;font-weight:600;">📞 전화하기</span></div>
+          <div style="flex:1;height:44px;background:#F3F4F6;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:#374151;font-size:15px;font-weight:600;">📝 기록</span></div>
+        </div>
+      </div>
+
+      <!-- Client Card 2 -->
+      <div style="background:white;border-radius:12px;border-left:4px solid #EF4444;padding:16px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="font-size:20px;">🔴</span>
+          <span style="font-size:16px;font-weight:700;color:#DC2626;">즉시 조치</span>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:#111827;margin-bottom:4px;">박영수 <span style="font-size:16px;font-weight:400;color:#6B7280;">(82세 · 송파구)</span></div>
+        <div style="font-size:15px;color:#6B7280;margin-bottom:2px;">• 4일 연속 무응답</div>
+        <div style="font-size:15px;color:#6B7280;margin-bottom:12px;">• 고령(82세) 위험도 보정</div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;height:44px;background:#2563EB;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:15px;font-weight:600;">📞 전화하기</span></div>
+          <div style="flex:1;height:44px;background:#F3F4F6;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:#374151;font-size:15px;font-weight:600;">📝 기록</span></div>
+        </div>
+      </div>
+
+      <!-- High Section -->
+      <div style="font-size:16px;font-weight:700;color:#D97706;margin-bottom:12px;">🟠 오늘 연락 필요 <span style="font-size:14px;font-weight:400;color:#9CA3AF;">(5명)</span></div>
+      <div style="background:white;border-radius:12px;border-left:4px solid #F59E0B;padding:14px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><span>🟠</span><span style="font-size:14px;font-weight:700;color:#D97706;">오늘 연락</span></div>
+        <div style="font-size:18px;font-weight:700;color:#111827;">이정숙 <span style="font-size:14px;font-weight:400;color:#6B7280;">(74세 · 마포구)</span></div>
+        <div style="font-size:13px;color:#6B7280;">• 2일 연속 무응답</div>
+        <div style="display:flex;gap:8px;margin-top:10px;">
+          <div style="flex:1;height:44px;background:#2563EB;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:14px;font-weight:600;">📞 전화하기</span></div>
+          <div style="flex:1;height:44px;background:#F3F4F6;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span style="color:#374151;font-size:14px;font-weight:600;">📝 기록</span></div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div style="background:white;border-radius:12px;border:1px solid #F3F4F6;padding:16px;margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="color:#6B7280;">오늘 완료</span>
+          <span style="font-weight:700;color:#111827;">12 / 28명</span>
+        </div>
+        <div style="height:8px;background:#F3F4F6;border-radius:999px;overflow:hidden;">
+          <div style="height:100%;width:43%;background:#3B82F6;border-radius:999px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #F3F4F6;display:flex;">
+      <div style="flex:1;padding:12px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#2563EB;">
+        <span style="font-size:20px;">🏠</span><span style="font-size:12px;font-weight:500;">홈</span>
+      </div>
+      <div style="flex:1;padding:12px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#9CA3AF;">
+        <span style="font-size:20px;">🔍</span><span style="font-size:12px;">위험 탐지</span>
+      </div>
+      <div style="flex:1;padding:12px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#9CA3AF;">
+        <span style="font-size:20px;">📊</span><span style="font-size:12px;">리포트</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── W02 CLIENT DETAIL ───── -->
+<div class="col">
+  <div class="screen-label">W02 대상자 상세 /client/[id]</div>
+  <div class="screen">
+    <!-- Header -->
+    <div style="background:white;border-bottom:1px solid #F3F4F6;padding:0 16px;height:56px;display:flex;align-items:center;gap:12px;position:sticky;top:0;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;font-size:18px;">←</div>
+      <div style="flex:1;">
+        <div style="font-size:16px;font-weight:700;color:#111827;">🔴 김순자</div>
+        <div style="font-size:12px;color:#6B7280;">78세</div>
+      </div>
+      <span style="font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#FEE2E2;color:#DC2626;">즉시 조치</span>
+    </div>
+
+    <div style="padding:16px;overflow-y:auto;max-height:730px;padding-bottom:80px;">
+      <!-- Risk Score Bar -->
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:12px;padding:16px;margin-bottom:12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:20px;">🔴</span><span style="font-size:16px;font-weight:700;color:#DC2626;">즉시 조치</span></div>
+          <span style="font-size:24px;font-weight:700;color:#DC2626;">87점</span>
+        </div>
+        <div style="height:12px;background:rgba(255,255,255,0.6);border-radius:999px;overflow:hidden;margin-bottom:12px;">
+          <div style="height:100%;width:87%;background:#EF4444;border-radius:999px;"></div>
+        </div>
+        <div style="font-size:13px;color:#DC2626;">• 5일 연속 무응답</div>
+        <div style="font-size:13px;color:#DC2626;">• 응답 시각 4.2시간 이동</div>
+        <div style="font-size:13px;color:#DC2626;">• 과거 위험 이력 있음</div>
+      </div>
+
+      <!-- AI Anomaly Panel -->
+      <div style="background:#FAF5FF;border:1px solid #E9D5FF;border-radius:12px;padding:16px;margin-bottom:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:14px;font-weight:600;color:#6B21A8;">🤖 AI 이상징후 분석</span>
+          <span style="font-size:12px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 8px;border-radius:999px;">+32점 기여</span>
+        </div>
+        <div style="font-size:12px;color:#7C3AED;">• 응답 시각 4.2시간 이동</div>
+        <div style="font-size:12px;color:#7C3AED;">• 지속 응답 후 갑작스런 무응답</div>
+        <div style="font-size:12px;color:#7C3AED;">• 겨울철 고위험 계절</div>
+        <div style="display:flex;gap:16px;margin-top:8px;padding-top:8px;border-top:1px solid #EDE9FE;font-size:11px;color:#8B5CF6;">
+          <span>응답률 63%</span><span>평균 응답시각 08:42</span>
+        </div>
+      </div>
+
+      <!-- Basic Info -->
+      <div style="background:white;border-radius:12px;border:1px solid #F3F4F6;padding:16px;margin-bottom:12px;">
+        <div style="font-size:16px;font-weight:600;color:#111827;margin-bottom:12px;">기본 정보</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:14px;color:#6B7280;">전화번호</span><span style="font-size:14px;font-weight:500;color:#111827;">010-1234-5678</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:14px;color:#6B7280;">담당 복지사</span><span style="font-size:14px;font-weight:500;color:#111827;">이민지</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:14px;color:#6B7280;">보호자</span><span style="font-size:14px;font-weight:500;color:#111827;">박성민 (son)</span></div>
+        <div style="display:flex;justify-content:space-between;"><span style="font-size:14px;color:#6B7280;">다음 연락 예정</span><span style="font-size:14px;font-weight:500;color:#2563EB;">2026-05-30</span></div>
+      </div>
+
+      <!-- 14-day Response History -->
+      <div style="background:white;border-radius:12px;border:1px solid #F3F4F6;padding:16px;margin-bottom:12px;">
+        <div style="font-size:16px;font-weight:600;color:#111827;margin-bottom:12px;">14일 응답 현황</div>
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">
+          ${['월','화','수','목','금','토','일','월','화','수','목','금','토','오'].map((d,i) => `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <span style="font-size:10px;color:#9CA3AF;">${d}</span>
+            <div style="width:32px;height:32px;border-radius:50%;background:${i>8?'#DCFCE7':'#F3F4F6'};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:${i>8?'#16A34A':'#9CA3AF'};${i===13?'box-shadow:0 0 0 2px #60A5FA,0 0 0 4px white;':''}">${i>8?'✓':'✗'}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Buttons -->
+    <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-top:1px solid #F3F4F6;padding:12px 16px;">
+      <div style="display:flex;gap:12px;">
+        <div style="flex:1;height:48px;border-radius:12px;border:2px solid #FCD34D;display:flex;align-items:center;justify-content:center;"><span style="color:#92400E;font-size:14px;font-weight:600;">📣 보호자 알림</span></div>
+        <div style="flex:1;height:48px;border-radius:12px;background:#2563EB;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:14px;font-weight:600;">📋 연락 기록</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── W03 RECORD MODAL ───── -->
+<div class="col">
+  <div class="screen-label">W03 빠른 기록 모달</div>
+  <div class="screen" style="background:rgba(0,0,0,0.4);">
+    <div style="position:absolute;bottom:0;left:0;right:0;background:white;border-radius:24px 24px 0 0;padding:24px;">
+      <div style="width:40px;height:4px;background:#E5E7EB;border-radius:2px;margin:0 auto 20px;"></div>
+      <div style="font-size:18px;font-weight:700;color:#111827;margin-bottom:4px;">📋 연락 기록</div>
+      <div style="font-size:14px;color:#6B7280;margin-bottom:20px;">김순자님</div>
+
+      <!-- Step 1: Result -->
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:10px;">통화 결과</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="height:48px;background:#EFF6FF;border:2px solid #2563EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#1D4ED8;font-weight:600;">✅ 통화완료</div>
+        <div style="height:48px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#374151;">📵 부재중</div>
+        <div style="height:48px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#374151;">❌ 수신거부</div>
+        <div style="height:48px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#374151;">📶 연결불가</div>
+      </div>
+
+      <!-- Step 2: Status -->
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:10px;">현재 상태</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="height:44px;background:#F0FDF4;border:2px solid #22C55E;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#15803D;font-weight:600;">😊 정상</div>
+        <div style="height:44px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#374151;">⚠️ 주의</div>
+        <div style="height:44px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#374151;">🚨 위험</div>
+      </div>
+
+      <!-- Next Contact -->
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:10px;">다음 연락</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px;">
+        <div style="height:44px;background:#EFF6FF;border:2px solid #2563EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#1D4ED8;font-weight:600;">내일</div>
+        <div style="height:44px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#374151;">3일 후</div>
+        <div style="height:44px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#374151;">1주 후</div>
+      </div>
+
+      <div style="height:56px;background:#2563EB;border-radius:14px;display:flex;align-items:center;justify-content:center;">
+        <span style="color:white;font-size:16px;font-weight:700;">저장하기</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── W05 RISK CENTER ───── -->
+<div class="col">
+  <div class="screen-label">W05 위험 탐지 센터 /risk-center</div>
+  <div class="screen">
+    <div style="background:white;border-bottom:1px solid #F3F4F6;padding:0 16px;height:56px;display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;">←</div>
+      <div style="flex:1;font-size:16px;font-weight:700;color:#111827;">🔍 위험 탐지 센터</div>
+      <span style="font-size:12px;color:#9CA3AF;">5건 미처리</span>
+    </div>
+
+    <div style="padding:16px;">
+      <!-- Filter -->
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <div style="flex:1;height:40px;background:#111827;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;color:white;">미처리</div>
+        <div style="flex:1;height:40px;border:1px solid #E5E7EB;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#6B7280;">전체</div>
+      </div>
+
+      <!-- Event 1 -->
+      <div style="background:white;border-radius:12px;border:1px solid #FECACA;padding:16px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:24px;">🔴</span>
+            <div><div style="font-size:14px;font-weight:700;color:#111827;">김순자</div><div style="font-size:12px;color:#6B7280;">78세</div></div>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:12px;font-weight:700;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:999px;">87점</span>
+            <div style="font-size:11px;color:#9CA3AF;margin-top:2px;">05월 29일 06:00</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:#DC2626;margin-bottom:10px;">• 5일 연속 무응답<br>• 응답 시각 4.2시간 이동</div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;height:36px;background:#2563EB;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">상세 보기 / 연락</div>
+          <div style="height:36px;padding:0 12px;border:1px solid #E5E7EB;border-radius:8px;display:flex;align-items:center;font-size:12px;color:#6B7280;">처리 완료</div>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div style="background:white;border-radius:12px;border:1px solid #FECACA;padding:16px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:24px;">🔴</span>
+            <div><div style="font-size:14px;font-weight:700;color:#111827;">박영수</div><div style="font-size:12px;color:#6B7280;">82세</div></div>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:12px;font-weight:700;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:999px;">81점</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:#DC2626;margin-bottom:10px;">• 4일 연속 무응답<br>• 고령(82세) 위험도 보정</div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;height:36px;background:#2563EB;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">상세 보기 / 연락</div>
+          <div style="height:36px;padding:0 12px;border:1px solid #E5E7EB;border-radius:8px;display:flex;align-items:center;font-size:12px;color:#6B7280;">처리 완료</div>
+        </div>
+      </div>
+
+      <!-- Event 3 (high) -->
+      <div style="background:white;border-radius:12px;border:1px solid #FDE68A;padding:16px;margin-bottom:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:24px;">🟠</span>
+            <div><div style="font-size:14px;font-weight:700;color:#111827;">이정숙</div><div style="font-size:12px;color:#6B7280;">74세</div></div>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:12px;font-weight:700;background:#FEF3C7;color:#D97706;padding:2px 8px;border-radius:999px;">65점</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:#D97706;margin-bottom:10px;">• 2일 연속 무응답<br>• 주말 응답 패턴 변화</div>
+        <div style="display:flex;gap:8px;">
+          <div style="flex:1;height:36px;background:#2563EB;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:white;font-weight:600;">상세 보기 / 연락</div>
+          <div style="height:36px;padding:0 12px;border:1px solid #E5E7EB;border-radius:8px;display:flex;align-items:center;font-size:12px;color:#6B7280;">처리 완료</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── W06 DAILY REPORT ───── -->
+<div class="col">
+  <div class="screen-label">W06 일일 보고서 /report</div>
+  <div class="screen">
+    <div style="background:white;border-bottom:1px solid #F3F4F6;padding:0 16px;height:56px;display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;">←</div>
+      <div style="flex:1;font-size:16px;font-weight:700;color:#111827;">📊 일일 보고서</div>
+      <input type="date" value="2026-05-29" style="font-size:12px;border:1px solid #E5E7EB;border-radius:8px;padding:4px 8px;">
+    </div>
+
+    <div style="padding:16px;overflow-y:auto;max-height:780px;">
+      <!-- Title Card -->
+      <div style="background:#1D4ED8;border-radius:12px;padding:16px;margin-bottom:16px;">
+        <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:4px;">2026-05-29</div>
+        <div style="font-size:18px;font-weight:700;color:white;">이민지 복지사</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px;">일일 활동 보고서</div>
+      </div>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div style="background:#EFF6FF;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#3B82F6;margin-bottom:4px;">총 담당 대상자</div>
+          <div style="font-size:24px;font-weight:700;color:#1D4ED8;">28명</div>
+          <div style="font-size:12px;color:#93C5FD;">응답률 64%</div>
+        </div>
+        <div style="background:#F0FDF4;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#22C55E;margin-bottom:4px;">오늘 응답</div>
+          <div style="font-size:24px;font-weight:700;color:#15803D;">18명</div>
+          <div style="font-size:12px;color:#86EFAC;">미응답 10명</div>
+        </div>
+        <div style="background:#FEF2F2;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#EF4444;margin-bottom:4px;">위험 탐지</div>
+          <div style="font-size:24px;font-weight:700;color:#DC2626;">5건</div>
+          <div style="font-size:12px;color:#FCA5A5;">오늘 신규</div>
+        </div>
+        <div style="background:#EFF6FF;border-radius:12px;padding:12px;">
+          <div style="font-size:12px;color:#3B82F6;margin-bottom:4px;">전화/방문</div>
+          <div style="font-size:24px;font-weight:700;color:#1D4ED8;">12 / 3</div>
+          <div style="font-size:12px;color:#93C5FD;">통화 / 방문 완료</div>
+        </div>
+      </div>
+
+      <!-- Issues -->
+      <div style="background:white;border-radius:12px;border:1px solid #F3F4F6;padding:16px;margin-bottom:12px;">
+        <div style="font-size:16px;font-weight:600;color:#111827;margin-bottom:12px;">⚠️ 특이 사항</div>
+        <div style="border-left:3px solid #F59E0B;padding-left:12px;margin-bottom:10px;">
+          <div style="font-size:14px;font-weight:500;color:#111827;">김순자</div>
+          <div style="font-size:12px;color:#6B7280;">위험 상태 확인</div>
+          <div style="font-size:12px;color:#9CA3AF;">조치: 119 신고 안내, 보호자 연락</div>
+        </div>
+        <div style="border-left:3px solid #F59E0B;padding-left:12px;">
+          <div style="font-size:14px;font-weight:500;color:#111827;">박영수</div>
+          <div style="font-size:12px;color:#6B7280;">주의 상태 확인</div>
+          <div style="font-size:12px;color:#9CA3AF;">조치: 보호자 알림 발송</div>
+        </div>
+      </div>
+
+      <!-- B2G Link -->
+      <div style="height:48px;border-radius:12px;border:2px solid #BFDBFE;display:flex;align-items:center;justify-content:center;">
+        <span style="color:#2563EB;font-size:14px;font-weight:600;">📋 월간 B2G 보고서 보기 →</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── W07 B2G MONTHLY REPORT ───── -->
+<div class="col">
+  <div class="screen-label">W07 월간 B2G 보고서 /report/monthly</div>
+  <div class="screen">
+    <div style="background:white;border-bottom:1px solid #F3F4F6;padding:0 16px;height:56px;display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:50%;background:#F3F4F6;display:flex;align-items:center;justify-content:center;">←</div>
+      <div style="flex:1;font-size:16px;font-weight:700;color:#111827;">📋 월간 B2G 보고서</div>
+      <div style="height:32px;padding:0 12px;background:#2563EB;border-radius:8px;display:flex;align-items:center;font-size:12px;font-weight:600;color:white;">⬇ CSV</div>
+    </div>
+
+    <div style="padding:16px;overflow-y:auto;max-height:780px;">
+      <!-- Period selector -->
+      <div style="display:flex;gap:8px;margin-bottom:16px;">
+        <select style="flex:1;height:40px;border:1px solid #E5E7EB;border-radius:10px;padding:0 12px;font-size:14px;background:white;">
+          <option>2026년</option>
+        </select>
+        <select style="flex:1;height:40px;border:1px solid #E5E7EB;border-radius:10px;padding:0 12px;font-size:14px;background:white;">
+          <option>5월</option>
+        </select>
+      </div>
+
+      <!-- Title -->
+      <div style="background:#1E40AF;border-radius:12px;padding:16px;margin-bottom:16px;color:white;">
+        <div style="font-size:12px;opacity:0.7;">복지 서비스 월간 현황 보고서</div>
+        <div style="font-size:18px;font-weight:700;margin:4px 0;">2026년 5월</div>
+        <div style="font-size:12px;opacity:0.6;">2026-05-01 ~ 2026-05-31</div>
+      </div>
+
+      <!-- KPIs -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+        <div style="background:#EFF6FF;border-radius:12px;padding:12px;">
+          <div style="font-size:11px;color:#3B82F6;margin-bottom:4px;">총 대상자</div>
+          <div style="font-size:22px;font-weight:700;color:#1D4ED8;">28명</div>
+          <div style="font-size:11px;color:#93C5FD;">복지사 3명</div>
+        </div>
+        <div style="background:#F0FDF4;border-radius:12px;padding:12px;">
+          <div style="font-size:11px;color:#22C55E;margin-bottom:4px;">전체 응답률</div>
+          <div style="font-size:22px;font-weight:700;color:#15803D;">71%</div>
+          <div style="font-size:11px;color:#86EFAC;">월간 평균</div>
+        </div>
+        <div style="background:#EFF6FF;border-radius:12px;padding:12px;">
+          <div style="font-size:11px;color:#3B82F6;margin-bottom:4px;">연락 건수</div>
+          <div style="font-size:22px;font-weight:700;color:#1D4ED8;">312건</div>
+          <div style="font-size:11px;color:#93C5FD;">전화 280 / 방문 32</div>
+        </div>
+        <div style="background:#FEF2F2;border-radius:12px;padding:12px;">
+          <div style="font-size:11px;color:#EF4444;margin-bottom:4px;">위험 이벤트</div>
+          <div style="font-size:22px;font-weight:700;color:#DC2626;">23건</div>
+          <div style="font-size:11px;color:#FCA5A5;">긴급 8 / 주의 15</div>
+        </div>
+      </div>
+
+      <!-- Risk Distribution -->
+      <div style="background:white;border-radius:12px;border:1px solid #F3F4F6;padding:16px;margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:600;color:#111827;margin-bottom:12px;">위험도 분포</div>
+        ${[['🔴 즉시조치','3명','#F87171',10],['🟠 오늘연락','5명','#FB923C',18],['🟡 이번주확인','8명','#FBBF24',29],['🟢 정상','12명','#4ADE80',43]].map(([l,c,color,pct]) => `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <span style="width:96px;font-size:12px;color:#6B7280;flex-shrink:0;">${l}</span>
+          <div style="flex:1;height:20px;background:#F3F4F6;border-radius:999px;overflow:hidden;">
+            <div style="height:100%;width:${pct}%;background:${color};border-radius:999px;"></div>
+          </div>
+          <span style="width:60px;font-size:12px;color:#6B7280;text-align:right;flex-shrink:0;">${c} (${pct}%)</span>
+        </div>`).join('')}
+      </div>
+
+      <!-- Daily Trend Bars -->
+      <div style="background:white;border-radius:12px;border:1px solid #F3F4F6;padding:16px;">
+        <div style="font-size:14px;font-weight:600;color:#111827;margin-bottom:12px;">일별 응답률 추이</div>
+        <div style="display:flex;align-items:flex-end;height:72px;gap:2px;">
+          ${[65,70,68,75,80,60,55,72,85,78,80,71,69,74,83,76,79,81,70,65,88,82,75,73,79,82,71,69,74,80].map((v,i) =>
+            `<div style="flex:1;border-radius:2px 2px 0 0;height:${v}%;background:${v>=80?'#4ADE80':v>=60?'#FBBF24':'#F87171'};"></div>`
+          ).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───── G01 GUARDIAN HOME ───── -->
+<div class="col">
+  <div class="screen-label">G01 보호자 홈 /(guardian)</div>
+  <div class="screen">
+    <header style="background:white;border-bottom:1px solid #F3F4F6;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-size:20px;font-weight:700;color:#111827;">실버케어 · 김순자 안부</div>
+      <span style="font-size:12px;color:#9CA3AF;">로그아웃</span>
+    </header>
+
+    <div style="padding:16px;space-y:16px;">
+      <!-- Status Card -->
+      <div style="background:#FEE2E2;border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #FECACA;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="width:56px;height:56px;border-radius:50%;background:#FCA5A5;display:flex;align-items:center;justify-content:center;font-size:28px;">😟</div>
+          <div>
+            <div style="font-size:20px;font-weight:700;color:#991B1B;">어머니 연락 필요</div>
+            <div style="font-size:14px;color:#B91C1C;">오늘 응답 없음</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:12px;color:#6B7280;">마지막 응답</div>
+            <div style="font-size:16px;font-weight:600;color:#111827;">2일 전 08:42</div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#6B7280;">연속 무응답</div>
+            <div style="font-size:16px;font-weight:600;color:#DC2626;">5일</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7-day History -->
+      <div style="background:white;border-radius:16px;padding:16px;margin-bottom:16px;border:1px solid #F3F4F6;">
+        <div style="font-size:16px;font-weight:600;color:#111827;margin-bottom:12px;">최근 7일 응답</div>
+        <div style="display:flex;gap:8px;justify-content:space-between;">
+          ${[['월',true],['화',true],['수',false],['목',false],['금',false],['토',false],['오늘',false]].map(([d,ok]) => `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <span style="font-size:12px;color:#9CA3AF;">${d}</span>
+            <div style="width:40px;height:40px;border-radius:50%;background:${ok?'#DCFCE7':'#F3F4F6'};display:flex;align-items:center;justify-content:center;font-size:16px;">${ok?'✓':'✗'}</div>
+          </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- Worker Contact -->
+      <div style="background:white;border-radius:16px;padding:16px;border:1px solid #F3F4F6;">
+        <div style="font-size:16px;font-weight:600;color:#111827;margin-bottom:12px;">담당 복지사</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div>
+            <div style="font-size:18px;font-weight:600;color:#111827;">이민지</div>
+            <div style="font-size:14px;color:#6B7280;">010-0000-1111</div>
+          </div>
+          <a href="tel:010-0000-1111" style="width:56px;height:56px;background:#2563EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;text-decoration:none;">📞</a>
+        </div>
+      </div>
+
+      <p style="text-align:center;font-size:16px;color:#9CA3AF;margin-top:16px;">매일 아침 안부를 확인하고 있어요 😊</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end grid-wrap -->
+
+<div style="text-align:center;padding:24px;color:#4B5563;font-size:13px;">
+  Phase 1~6 완성 | Next.js 14 + Supabase + Tailwind CSS | claude/welfare-worker-e2e-flow-0aR8v
+</div>
+
+</body>
+</html>
