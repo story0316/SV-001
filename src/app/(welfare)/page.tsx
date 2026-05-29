@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { ClientCard } from "@/components/welfare/ClientCard";
 import { RecordModal } from "@/components/welfare/RecordModal";
 import { NotifyModal } from "@/components/welfare/NotifyModal";
@@ -11,6 +12,7 @@ const WORKER_ID = "a0000000-0000-0000-0000-000000000001";
 const WORKER_NAME = "이민지";
 
 export default function WelfareDashboardPage() {
+  const router = useRouter();
   const [dashboard, setDashboard] = useState<TodayDashboard | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -210,11 +212,17 @@ export default function WelfareDashboardPage() {
           <span className="text-xl">🏠</span>
           <span className="text-[12px] font-medium">홈</span>
         </button>
-        <button className="flex-1 py-3 flex flex-col items-center gap-1 text-gray-400">
-          <span className="text-xl">👥</span>
-          <span className="text-[12px]">전체</span>
+        <button
+          onClick={() => router.push("/risk-center")}
+          className="flex-1 py-3 flex flex-col items-center gap-1 text-gray-400 hover:text-red-500 transition-colors"
+        >
+          <span className="text-xl">🔍</span>
+          <span className="text-[12px]">위험 탐지</span>
         </button>
-        <button className="flex-1 py-3 flex flex-col items-center gap-1 text-gray-400">
+        <button
+          onClick={() => router.push("/report")}
+          className="flex-1 py-3 flex flex-col items-center gap-1 text-gray-400 hover:text-blue-500 transition-colors"
+        >
           <span className="text-xl">📊</span>
           <span className="text-[12px]">리포트</span>
         </button>

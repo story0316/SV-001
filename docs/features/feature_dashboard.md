@@ -21,9 +21,11 @@
 | ID | 화면 | 구현 상태 |
 |----|------|---------|
 | W01 | Today Dashboard | ✅ Phase 2 완성 |
-| W02 | 대상자 상세 | ⏳ Phase 3 예정 |
+| W02 | 대상자 상세 | ✅ Phase 3 완성 |
 | W03 | 빠른 기록 모달 | ✅ Phase 2 완성 |
 | W04 | 보호자 알림 모달 | ✅ Phase 2 완성 |
+| W05 | 위험 탐지 센터 | ✅ Phase 3 완성 |
+| W06 | 일일 보고서 | ✅ Phase 3 완성 |
 
 ## 2. 우선순위 정렬 알고리즘
 
@@ -50,3 +52,4 @@ RecordModal 단계:
 | Version | Date | Author | Changes | Expected Impact |
 |---|---|---|---|---|
 | v0.1 | 2026-05-29 19:00 | Dev | Phase 2 dashboard basics | Enable worker daily workflow |
+| v0.2 | 2026-05-29 | Dev | Phase 3: W02 detail, W05 risk center, W06 report | Complete E2E welfare worker flow |

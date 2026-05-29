@@ -159,3 +159,83 @@ export interface CognitionResponse {
   response_time_ms: number;
   answered_at: string;
 }
+
+// ─────────────────────────────────────────
+// Phase 3 타입
+// ─────────────────────────────────────────
+
+// 대상자 상세 (W02)
+export interface ClientDetail {
+  id: string;
+  name: string;
+  age: number;
+  phone?: string;
+  address?: string;
+  riskScore: number;
+  riskLevel: RiskLevel;
+  riskFactors: string[];
+  assignedWorker?: { name: string; phone: string };
+  guardian?: { name: string; phone: string; relationship: string };
+  responseHistory: ResponseHistoryItem[];  // 14일
+  contactLog: ContactLogItem[];
+  notes: NoteItem[];
+  nextContactScheduled?: string;
+}
+
+// 연락 기록 항목
+export interface ContactLogItem {
+  id: string;
+  date: string;
+  workerName: string;
+  type: string;
+  result?: ContactResult;
+  status?: string;
+  actions?: string[];
+  note?: string;
+}
+
+// 메모 항목
+export interface NoteItem {
+  id: string;
+  content: string;
+  workerName: string;
+  createdAt: string;
+}
+
+// 위험 탐지 센터 항목 (W05)
+export interface RiskEvent {
+  id: string;
+  clientId: string;
+  clientName: string;
+  clientAge: number;
+  detectedAt: string;
+  riskScore: number;
+  riskLevel: RiskLevel;
+  riskFactors: string[];
+  isAddressed: boolean;
+}
+
+// 일간 보고서 (W06)
+export interface ReportIssue {
+  clientId: string;
+  clientName: string;
+  description: string;
+  actionTaken: string;
+}
+
+export interface DailyReport {
+  date: string;
+  workerName: string;
+  stats: {
+    totalClients: number;
+    responded: number;
+    responseRate: string;
+    riskDetected: number;
+    callsMade: number;
+    visitsCompleted: number;
+    guardianNotified: number;
+  };
+  issues: ReportIssue[];
+  nextDayHandoff: string[];
+  generatedAt: string;
+}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { ClientCard as ClientCardType } from "@/types";
 import { RISK_CONFIG, cn } from "@/lib/utils";
 
@@ -13,6 +14,7 @@ interface ClientCardProps {
 // 복지사 대상자 카드 (W01 대시보드용)
 // 정보 우선순위: 위험도 → 이름/나이 → 위험 이유 → 액션
 export function ClientCard({ client, onCall, onRecord, variant = "full" }: ClientCardProps) {
+  const router = useRouter();
   const risk = RISK_CONFIG[client.riskLevel];
 
   return (
@@ -41,12 +43,17 @@ export function ClientCard({ client, onCall, onRecord, variant = "full" }: Clien
       </div>
 
       {/* 이름 + 나이 + 지역 */}
-      <p className="text-[20px] font-bold text-gray-900 mb-1">
-        {client.name}{" "}
-        <span className="text-[16px] font-normal text-gray-500">
-          ({client.age}세 · {client.district})
-        </span>
-      </p>
+      <button
+        onClick={() => router.push(`/client/${client.id}`)}
+        className="text-left mb-1"
+      >
+        <p className="text-[20px] font-bold text-gray-900 hover:underline">
+          {client.name}{" "}
+          <span className="text-[16px] font-normal text-gray-500">
+            ({client.age}세 · {client.district})
+          </span>
+        </p>
+      </button>
 
       {/* 위험 이유 — 최대 2줄 */}
       {client.riskReasons.length > 0 && (
