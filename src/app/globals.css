@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* 고령층 UX: 기본 폰트 크기 18px (ux_principles.md) */
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+    -webkit-font-smoothing: antialiased;
+    /* 확대/축소 방지 (고령층 실수 터치 대응) */
+    touch-action: manipulation;
+  }
+
+  /* 모든 버튼 터치 영역 최소 44px */
+  button, a[role="button"], [data-touch-target] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+@layer components {
+  /* 고령층 기본 버튼 — 최소 56px 높이 */
+  .btn-elder {
+    @apply h-14 px-6 rounded-xl text-[18px] font-bold
+           flex items-center justify-center gap-2
+           active:scale-95 transition-transform;
+  }
+
+  .btn-elder-primary {
+    @apply btn-elder bg-blue-600 text-white;
+  }
+
+  .btn-elder-secondary {
+    @apply btn-elder bg-gray-100 text-gray-700;
+  }
+
+  /* 위험도 배지 */
+  .risk-badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-[14px] font-semibold;
+  }
+}

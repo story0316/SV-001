@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/daily-check",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/reminder",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/risk-recalc",
+      "schedule": "0 21 * * *"
+    }
+  ]
+}
