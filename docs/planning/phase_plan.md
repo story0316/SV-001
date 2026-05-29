@@ -241,27 +241,30 @@ POST /api/welfare/guardian-notify
 
 ### 포함
 ```
-✅ 월간 통계 자동 생성
-✅ 기관별 비교 분석
-✅ 정책 지표 (고독사 감소율 등)
-✅ PDF/Excel 내보내기
-✅ Admin Dashboard
-✅ 수정/재발송 가능한 워크플로우
+✅ 월간 통계 자동 생성 (기관 전체 집계)
+✅ 일별 응답률 트렌드 시각화
+✅ 위험도 분포 바 차트
+✅ 복지사별 실적 테이블
+✅ CSV 내보내기 (UTF-8 BOM, Excel 직접 열기)
+⏳ PDF/Excel 전환 (Phase 6 검토, ADR-004)
+⏳ Admin Dashboard (Phase 6 검토)
 ```
 
 ### 화면
 ```
-Admin:
-  A01: B2G 통합 대시보드
-  A02: 월간/년간 리포트
-  A03: 기관별 현황
+Welfare:
+  /report/monthly: B2G 월간 보고서 (기관 집계)
+
+API:
+  GET /api/welfare/report/monthly?orgId&year&month
+  GET /api/welfare/report/export?orgId&year&month&format=csv
 ```
 
 ### Success Criteria
 ```
-✅ 지자체에서 받을 수 있는 형식 확보
-✅ 월간 리포트 자동 생성 시간 < 5분
-✅ 1개 지자체 파일럿 진행
+✅ CSV 내보내기 즉시 다운로드 (< 500ms)
+✅ 월간 집계 보고서 생성 완료
+✅ 복지사별/기관별 KPI 집계
 ```
 
 ---
@@ -354,6 +357,7 @@ Week 8:  Phase 5 완료 + 최종 점검
 | Version | Date | Author | Changes | Expected Impact |
 |---|---|---|---|---|
 | v0.1 | 2026-05-29 17:40 | PM | Initial phase roadmap | Guide all 5 phases |
+| v0.2 | 2026-05-29 | Dev | Phase 5 B2G scope confirmed (CSV export, monthly API) + ADR-004 | B2G 보고서 즉시 제출 가능 |
 
 ---
 

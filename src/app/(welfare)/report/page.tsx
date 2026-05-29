@@ -126,6 +126,14 @@ export default function ReportPage() {
           <p className="text-center text-xs text-gray-400">
             생성: {new Date(report.generatedAt).toLocaleString("ko-KR")}
           </p>
+
+          {/* B2G 월간 보고서 링크 */}
+          <button
+            onClick={() => router.push("/report/monthly")}
+            className="w-full h-12 rounded-xl border-2 border-blue-200 text-blue-700 text-sm font-semibold flex items-center justify-center gap-2"
+          >
+            📋 월간 B2G 보고서 보기 →
+          </button>
         </div>
       )}
     </div>
