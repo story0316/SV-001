@@ -3,11 +3,11 @@ import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { RiskEvent } from "@/types";
 import { RISK_CONFIG } from "@/lib/utils";
-
-const WORKER_ID = "a0000000-0000-0000-0000-000000000001"; // TODO: real auth
+import { useWelfareUser } from "@/lib/auth/WelfareAuthContext";
 
 export default function RiskCenterPage() {
   const router = useRouter();
+  const { id: WORKER_ID } = useWelfareUser();
   const [events, setEvents] = useState<RiskEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"all" | "unaddressed">("unaddressed");

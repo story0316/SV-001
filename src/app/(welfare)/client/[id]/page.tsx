@@ -8,8 +8,7 @@ import { ResponseHistory14 } from "@/components/welfare/detail/ResponseHistory14
 import { ContactLogList } from "@/components/welfare/detail/ContactLogList";
 import { RecordModal } from "@/components/welfare/RecordModal";
 import { NotifyModal } from "@/components/welfare/NotifyModal";
-
-const WORKER_ID = "a0000000-0000-0000-0000-000000000001"; // TODO: real auth
+import { useWelfareUser } from "@/lib/auth/WelfareAuthContext";
 
 interface AnomalyData {
   anomaly: { score: number; factors: string[]; timeShift: { detected: boolean; shiftHours: number } };
@@ -20,6 +19,7 @@ interface AnomalyData {
 export default function ClientDetailPage() {
   const { id } = useParams<{ id: string }>();
   const router = useRouter();
+  const { id: WORKER_ID } = useWelfareUser();
   const [detail, setDetail] = useState<ClientDetail | null>(null);
   const [anomaly, setAnomaly] = useState<AnomalyData | null>(null);
   const [loading, setLoading] = useState(true);

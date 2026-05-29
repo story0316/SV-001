@@ -1,8 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
-const ORG_ID = "org0000-0000-0000-0000-000000000001"; // TODO: real auth
+import { useWelfareUser } from "@/lib/auth/WelfareAuthContext";
 
 interface DailyTrendItem { date: string; responseRate: number; totalSent: number; totalResponded: number }
 interface WorkerStat { workerId: string; workerName: string; assignedClients: number; contactsMade: number; responseRate: number }
@@ -21,6 +20,7 @@ interface MonthlyReport {
 
 export default function MonthlyReportPage() {
   const router = useRouter();
+  const { orgId: ORG_ID } = useWelfareUser();
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth() + 1);

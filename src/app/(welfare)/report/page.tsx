@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DailyReport } from "@/types";
 import { today } from "@/lib/utils";
-
-const WORKER_ID = "a0000000-0000-0000-0000-000000000001"; // TODO: real auth
+import { useWelfareUser } from "@/lib/auth/WelfareAuthContext";
 
 export default function ReportPage() {
   const router = useRouter();
+  const { id: WORKER_ID } = useWelfareUser();
   const [report, setReport] = useState<DailyReport | null>(null);
   const [loading, setLoading] = useState(true);
   const [date, setDate] = useState(today());

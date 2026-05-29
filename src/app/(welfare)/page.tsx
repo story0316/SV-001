@@ -6,15 +6,19 @@ import { ClientCard } from "@/components/welfare/ClientCard";
 import { RecordModal } from "@/components/welfare/RecordModal";
 import { NotifyModal } from "@/components/welfare/NotifyModal";
 import { TodayDashboard } from "@/types";
-
-// Phase 1 Seed Data의 복지사 ID (실제 운영 시 Auth에서 가져옴)
-const WORKER_ID = "a0000000-0000-0000-0000-000000000001";
-const WORKER_NAME = "이민지";
+import { useWelfareUser } from "@/lib/auth/WelfareAuthContext";
+import { createClient } from "@/lib/supabase/client";
 
 export default function WelfareDashboardPage() {
   const router = useRouter();
+  const { id: WORKER_ID, name: WORKER_NAME } = useWelfareUser();
   const [dashboard, setDashboard] = useState<TodayDashboard | null>(null);
   const [loading, setLoading] = useState(true);
+
+  async function handleLogout() {
+    await createClient().auth.signOut();
+    router.push("/login");
+  }
 
   // 기록 모달
   const [recordTarget, setRecordTarget] = useState<{ id: string; name: string } | null>(null);
@@ -70,6 +74,12 @@ export default function WelfareDashboardPage() {
               👋 {WORKER_NAME}님
             </h1>
           </div>
+          <button
+            onClick={handleLogout}
+            className="text-xs text-gray-400 hover:text-gray-600 px-2 py-1"
+          >
+            로그아웃
+          </button>
           {/* 즉시 조치 배지 */}
           <div className="flex gap-2">
             {dashboard.critical.length > 0 && (
