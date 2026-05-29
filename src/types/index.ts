@@ -91,3 +91,71 @@ export interface KakaoButtonPayload {
   content: string; // 버튼 키값
   createdTime: string;
 }
+
+// ─────────────────────────────────────────
+// Phase 2 타입
+// ─────────────────────────────────────────
+
+// 복지사 대시보드 — 대상자 카드
+export interface ClientCard {
+  id: string;
+  name: string;
+  age: number;
+  district: string;
+  riskLevel: RiskLevel;
+  riskScore: number;
+  riskReasons: string[];       // 최대 3개, 한줄 요약
+  lastResponseAgo?: string;
+  contactAttempts: number;     // 이번 연속 미응답 시도 수
+  nextContactScheduled?: string;
+}
+
+// 복지사 Today 대시보드 응답
+export interface TodayDashboard {
+  date: string;
+  workerName: string;
+  critical: ClientCard[];      // 🔴 즉시 조치
+  high: ClientCard[];          // 🟠 오늘 연락
+  pendingTasks: PendingTask[];
+  completedToday: number;
+  totalAssigned: number;
+}
+
+// 미완료 태스크
+export interface PendingTask {
+  id: string;
+  clientId: string;
+  clientName: string;
+  type: "record_missing" | "notify_pending" | "visit_overdue";
+  description: string;
+  dueDate?: string;
+}
+
+// 빠른 기록 입력 폼 (W03 모달)
+export interface ContactRecordForm {
+  clientId: string;
+  result: ContactResult;
+  status: "normal" | "warning" | "danger";
+  actions: string[];
+  note?: string;
+  nextContactDays: number; // 1 | 3 | 7
+}
+
+// 인지 체크 문제 (K02)
+export interface CognitionQuestion {
+  id: string;
+  type: "day_of_week" | "season" | "simple_math";
+  question: string;
+  options: string[];
+  correctIndex: number;
+}
+
+// 인지 체크 응답
+export interface CognitionResponse {
+  client_id: string;
+  question_id: string;
+  question_type: string;
+  is_correct: boolean;
+  response_time_ms: number;
+  answered_at: string;
+}
