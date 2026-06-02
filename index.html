@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="대한민국 No.1 연봉 정보 플랫폼. 회사별·직급별 기본급, 주식, 보너스 데이터를 익명으로 확인하세요." />
+  <title>연봉인사이트 — 한국판 임금 비교 플랫폼</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    @font-face {
+      font-family: 'Noto Sans KR';
+      font-style: normal;
+      font-weight: 400 900;
+      font-display: swap;
+      src: local('Noto Sans KR'), local('NotoSansKR');
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <meta property="og:title" content="연봉인사이트 — 한국판 임금 비교" />
+  <meta property="og:description" content="실제 재직자들이 제출한 검증된 연봉 데이터. 당신의 연봉, 이제 추측하지 마세요." />
+  <meta property="og:type" content="website" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+
+  <script src="js/components/layout.js"></script>
+  <script src="js/components/charts.js"></script>
+  <script src="js/components/home.js"></script>
+  <script src="js/components/company.js"></script>
+  <script src="js/components/submit.js"></script>
+  <script src="js/components/levels.js"></script>
+  <script src="js/components/report.js"></script>
+  <script src="js/components/compare.js"></script>
+
+  <script src="js/router.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initRouter();
+    });
+  </script>
+</body>
+</html>
